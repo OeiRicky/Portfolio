@@ -45,8 +45,8 @@ body::before {
 
 .label { margin: 0; font: 400 .74rem/1.2 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
 h1, h2, h3, p { text-wrap: pretty; }
-h2 { margin: 0; font: 400 clamp(2rem, 4.6vw, 3.6rem)/1.06 var(--display); letter-spacing: -.015em; text-wrap: balance; }
-.ptitle { margin: 0; font: 400 clamp(2.4rem, 6vw, 4.8rem)/1.05 var(--display); letter-spacing: -.02em; text-wrap: balance; }
+h2 { margin: 0; font: 400 clamp(1.8rem, 4.14vw, 3.24rem)/1.06 var(--display); letter-spacing: -.015em; text-wrap: balance; }
+.ptitle { margin: 0; font: 400 clamp(2.16rem, 5.4vw, 4.32rem)/1.05 var(--display); letter-spacing: -.02em; text-wrap: balance; }
 
 /* Buttons */
 .btn {
@@ -88,13 +88,13 @@ h2 { margin: 0; font: 400 clamp(2rem, 4.6vw, 3.6rem)/1.06 var(--display); letter
 .hero { padding-block: clamp(40px, 7vw, 96px) clamp(28px, 4vw, 48px); }
 .about { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 40px 32px; align-items: center; }
 .about-copy { grid-column: 1 / 8; display: grid; gap: 26px; justify-items: start; }
-.about-title { margin: 0; font: 400 clamp(3rem, 9vw, 7.5rem)/1 var(--display); letter-spacing: -.01em; text-transform: uppercase; }
+.about-title { margin: 0; font: 400 clamp(2.7rem, 8.1vw, 6.75rem)/1 var(--display); letter-spacing: -.01em; text-transform: uppercase; }
 .about-text { margin: 0; max-width: 58ch; font-size: clamp(1rem, 1.3vw, 1.15rem); line-height: 1.75; }
 .about-photo { grid-column: 10 / 13; justify-self: end; width: 100%; max-width: 280px; margin: 0; }
 .about-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 28%; border-radius: 18px; background: var(--surface); }
 @media (max-width: 900px) { .about-copy, .about-photo { grid-column: 1 / -1; } .about-photo { justify-self: start; max-width: 220px; } }
 .hero-top { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 28px 32px; align-items: end; margin-top: 22px; }
-h1.hero-title { grid-column: 1 / 9; margin: 0; font: 400 clamp(2.5rem, 6.6vw, 5.8rem)/1.04 var(--display); letter-spacing: -.02em; text-wrap: balance; }
+h1.hero-title { grid-column: 1 / 9; margin: 0; font: 400 clamp(2.25rem, 5.94vw, 5.22rem)/1.04 var(--display); letter-spacing: -.02em; text-wrap: balance; }
 h1.hero-title em { font-style: italic; color: var(--accent); }
 .hero-side { grid-column: 9 / 13; display: grid; gap: 24px; padding-bottom: .6rem; }
 .hero-side p { margin: 0; color: var(--muted); max-width: 44ch; }
@@ -102,31 +102,31 @@ h1.hero-title em { font-style: italic; color: var(--accent); }
 @media (max-width: 900px) { h1.hero-title, .hero-side { grid-column: 1 / -1; } }
 
 .frame { position: relative; margin: 0; aspect-ratio: 239 / 100; overflow: hidden; background: #000; border-radius: 2px; }
-.frame canvas {
-  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 72%;
-  transform-origin: 62% 70%; animation: drift 30s ease-in-out infinite alternate;
+.hero-slides { position: absolute; inset: 0; touch-action: pan-y; }
+.hs { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity .9s ease; pointer-events: none; }
+.hs.on { opacity: 1; pointer-events: auto; z-index: 1; }
+.hs img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.02); }
+.hs.on img { animation: drift 9s ease-out forwards; }
+@keyframes drift { from { transform: scale(1.02); } to { transform: scale(1.08); } }
+.hs-cap {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; padding: clamp(14px, 2.4vw, 28px) clamp(12px, 2vw, 24px) clamp(12px, 1.8vw, 20px);
+  display: flex; justify-content: space-between; align-items: flex-end; gap: 12px;
+  font: 400 clamp(.6rem, .9vw, .78rem)/1.3 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: #fff;
+  background: linear-gradient(to top, rgba(0,0,0,.55), transparent); pointer-events: none;
 }
-@keyframes drift { from { transform: scale(1.02); } to { transform: scale(1.1) translateX(-1.5%); } }
-@media (max-width: 640px) { .frame { aspect-ratio: 4 / 3; } }
+.hs-cap a { color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.6); pointer-events: auto; }
+.hs-count { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.hs-nav { position: absolute; top: 50%; z-index: 3; transform: translateY(-50%); width: 44px; height: 44px; border: 0; border-radius: 50%; background: rgba(0,0,0,.35); color: #fff; font-size: 1.3rem; cursor: pointer; display: grid; place-items: center; backdrop-filter: blur(4px); }
+.hs-nav:hover, .hs-nav:focus-visible { background: rgba(0,0,0,.6); }
+.hs-prev { left: clamp(8px, 1.6vw, 20px); } .hs-next { right: clamp(8px, 1.6vw, 20px); }
+.hs-dots { position: absolute; z-index: 3; left: 50%; bottom: clamp(10px, 1.6vw, 18px); transform: translateX(-50%); display: flex; gap: 8px; }
+.hs-dots button { width: 7px; height: 7px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.45); cursor: pointer; }
+.hs-dots button.on { background: #fff; }
+@media (max-width: 640px) { .frame { aspect-ratio: 4 / 3; } .hs-nav { width: 36px; height: 36px; } .hs-dots { display: none; } }
 .grain::after {
-  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background-image: var(--grain); mix-blend-mode: overlay; opacity: .22;
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background-image: var(--grain); mix-blend-mode: overlay; opacity: .12;
 }
-.vf {
-  position: absolute; inset: 0; z-index: 2; pointer-events: none;
-  padding: clamp(12px, 2vw, 24px); display: flex; flex-direction: column; justify-content: space-between;
-  font: 400 clamp(.6rem, .9vw, .78rem)/1.2 var(--mono); letter-spacing: .14em; text-transform: uppercase;
-  color: rgba(255, 255, 255, .92); text-shadow: 0 1px 10px rgba(0, 0, 0, .55);
-  background:
-    linear-gradient(to right, transparent calc(33.33% - .5px), rgba(255,255,255,.13) 0 calc(33.33% + .5px), transparent 0 calc(66.66% - .5px), rgba(255,255,255,.13) 0 calc(66.66% + .5px), transparent 0),
-    linear-gradient(to bottom, transparent calc(33.33% - .5px), rgba(255,255,255,.13) 0 calc(33.33% + .5px), transparent 0 calc(66.66% - .5px), rgba(255,255,255,.13) 0 calc(66.66% + .5px), transparent 0);
-}
-.vf-row { display: flex; justify-content: space-between; gap: 6px 16px; flex-wrap: wrap; }
-.rec, .meta { font-variant-numeric: tabular-nums; }
-.rec { display: inline-flex; align-items: center; gap: .7em; }
-.rec i { width: .7em; height: .7em; border-radius: 50%; background: var(--rec); animation: blink 1.6s steps(2, start) infinite; }
-@keyframes blink { 50% { opacity: .15; } }
-.focus { position: absolute; left: 50%; top: 50%; width: clamp(44px, 7vw, 96px); aspect-ratio: 1.4; transform: translate(-50%, -50%); border: 1px solid rgba(255, 255, 255, .65); }
 
 /* Sections and subpages */
 .sec { padding-block: clamp(56px, 9vw, 128px); border-top: 1px solid var(--line); }
@@ -145,6 +145,9 @@ h1.hero-title em { font-style: italic; color: var(--accent); }
 }
 .chip:hover { color: var(--fg); border-color: var(--muted); }
 .chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+#teaser { column-count: auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: clamp(14px, 2vw, 28px); }
+@media (max-width: 900px) { #teaser { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { #teaser { grid-template-columns: 1fr; } }
 .grid { column-count: 3; column-gap: clamp(14px, 2vw, 28px); counter-reset: frame; }
 @media (max-width: 900px) { .grid { column-count: 2; } }
 @media (max-width: 560px) { .grid { column-count: 1; } }
@@ -182,7 +185,7 @@ figcaption .meta { font: 400 .7rem var(--mono); letter-spacing: .06em; margin-to
   display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr) minmax(0, 1fr);
   gap: 20px 40px; align-items: start; padding-block: clamp(26px, 3.5vw, 44px); border-bottom: 1px solid var(--line);
 }
-.svc-row h3 { margin: 0; font: italic 400 clamp(1.9rem, 3.6vw, 3rem)/1 var(--display); }
+.svc-row h3 { margin: 0; font: italic 400 clamp(1.71rem, 3.24vw, 2.7rem)/1 var(--display); }
 .svc-row p { margin: 0; color: var(--muted); max-width: 56ch; }
 .svc-row ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font: 400 .74rem/1.4 var(--mono); letter-spacing: .05em; text-transform: uppercase; }
 .svc-row ul li::before { content: "+ "; color: var(--accent); }
@@ -207,7 +210,7 @@ figcaption .meta { font: 400 .7rem var(--mono); letter-spacing: .06em; margin-to
 .ba-range { width: 100%; margin: 16px 0 0; accent-color: var(--accent); }
 
 /* Approach */
-.statement { margin: 22px 0 0; max-width: 24em; font: 400 clamp(1.8rem, 4.2vw, 3.4rem)/1.16 var(--display); letter-spacing: -.01em; text-wrap: balance; }
+.statement { margin: 22px 0 0; max-width: 24em; font: 400 clamp(1.62rem, 3.78vw, 3.06rem)/1.16 var(--display); letter-spacing: -.01em; text-wrap: balance; }
 .statement em { font-style: italic; }
 .prin { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px clamp(24px, 4vw, 56px); margin-top: clamp(40px, 6vw, 80px); }
 .prin div { border-top: 1px solid var(--line); padding-top: 18px; }
@@ -250,7 +253,7 @@ figcaption .meta { font: 400 .7rem var(--mono); letter-spacing: .06em; margin-to
 .mtab[aria-pressed="true"] .st.ok { background: var(--bg); }
 .mtab[aria-pressed="true"] .st.lim { background: linear-gradient(90deg, var(--bg) 50%, transparent 50%); }
 .cal-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; margin-top: 28px; }
-.cal-title { margin: 0 0 18px; font: 400 clamp(1.6rem, 3vw, 2.2rem)/1.1 var(--display); }
+.cal-title { margin: 0 0 18px; font: 400 clamp(1.44rem, 2.7vw, 1.98rem)/1.1 var(--display); }
 .cgrid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
 .dow { padding-bottom: 6px; text-align: center; font: 400 .66rem var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 .day { aspect-ratio: 1; min-height: 44px; padding: 0; background: var(--bg); color: var(--fg); border: 1px solid var(--line); border-radius: 2px; cursor: pointer; font: 400 .95rem var(--body); font-variant-numeric: tabular-nums; }
@@ -319,7 +322,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .shot img { display: block; width: 100%; height: auto; transition: transform .8s cubic-bezier(.2, .7, .2, 1); }
 .shot:hover img { transform: scale(1.03); }
 .proj-cta { margin-top: clamp(32px, 5vw, 64px); padding-top: 28px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; }
-.cta-line { margin: 0; font: 400 clamp(1.4rem, 2.6vw, 2rem)/1.2 var(--display); }
+.cta-line { margin: 0; font: 400 clamp(1.26rem, 2.34vw, 1.8rem)/1.2 var(--display); }
 
 /* Lightbox */
 .lb {
@@ -381,18 +384,20 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
 
     <div class="wrap">
       <figure class="frame grain">
-        <canvas id="hero-cv" role="img" aria-label="Sunset over the sea with a rock silhouette on the left"></canvas>
-        <div class="vf" aria-hidden="true">
-          <div class="vf-row">
-            <span class="rec"><i></i>REC <span id="tc">00:00:12:08</span></span>
-            <span>ISO 400 &middot; f/2.8 &middot; 24p</span>
-          </div>
-          <span class="focus"></span>
-          <div class="vf-row">
-            <span>Ratio 2.39:1</span>
-            <span>Photo &middot; Film &middot; Edit</span>
-          </div>
+        <div class="hero-slides" id="hs" role="region" aria-roledescription="carousel" aria-label="Selected photographs">
+          <figure class="hs on" data-slug="efrata-furniture" data-name="Efrata Furniture"><img src="Img1/efrata/06.jpg" alt="Efrata Furniture" style="object-position:50% 58%" decoding="async"></figure>
+          <figure class="hs" data-slug="model-x-kota-lama" data-name="Model X Kota Lama"><img src="Img2/kotalama/06.jpg" alt="Model X Kota Lama" style="object-position:50% 30%" loading="lazy" decoding="async"></figure>
+          <figure class="hs" data-slug="mr-d" data-name="Mr. D"><img src="Img1/mrd/02.jpg" alt="Mr. D" style="object-position:50% 62%" loading="lazy" decoding="async"></figure>
+          <figure class="hs" data-slug="night-market-simpang-lima" data-name="Night Market Simpang Lima"><img src="Img2/pasarmalam/03.jpg" alt="Night Market Simpang Lima" style="object-position:50% 45%" loading="lazy" decoding="async"></figure>
+          <figure class="hs" data-slug="binus-semarang-graduation" data-name="Joe, Marvel, &amp; Lorenzo"><img src="Img1/binus/05.jpg" alt="Joe, Marvel, &amp; Lorenzo" style="object-position:50% 38%" loading="lazy" decoding="async"></figure>
+          <figure class="hs" data-slug="pengasapan-ikan" data-name="Pengasapan Ikan"><img src="Img2/asap/04.jpg" alt="Pengasapan Ikan" style="object-position:50% 55%" loading="lazy" decoding="async"></figure>
+          <figure class="hs" data-slug="model-x-kota-lama" data-name="Model X Kota Lama"><img src="Img2/kotalama/03.jpg" alt="Model X Kota Lama" style="object-position:50% 33%" loading="lazy" decoding="async"></figure>
+          <figure class="hs" data-slug="gebyuran-bustaman" data-name="Gebyuran Bustaman"><img src="Img3/gebyuran/05.jpg" alt="Gebyuran Bustaman" style="object-position:50% 42%" loading="lazy" decoding="async"></figure>
         </div>
+        <button class="hs-nav hs-prev" type="button" aria-label="Previous photo">&#8249;</button>
+        <button class="hs-nav hs-next" type="button" aria-label="Next photo">&#8250;</button>
+        <div class="hs-cap"><a id="hs-link" href="#karya"></a><span class="hs-count" id="hs-count"></span></div>
+        <div class="hs-dots" id="hs-dots"></div>
       </figure>
     </div>
 
@@ -452,7 +457,8 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       </div>
     </section>
 
-    <section class="sec">
+    <!-- Edit bench: hidden until there is a before/after image. Remove the hidden attribute to show it again. -->
+    <section class="sec" hidden>
       <div class="wrap edit-grid">
         <div class="edit-copy">
           <p class="label">The edit bench</p>
@@ -842,25 +848,49 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
   }
 
   // ---- Hero ----
-  paint(document.getElementById('hero-cv'), 1600, 800, { scene: 'dusk', pal: 'warm', seed: 5 });
-  var tc = document.getElementById('tc');
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var t0 = performance.now(), off = 12 * 24 + 8;
-    setInterval(function () {
-      var f = Math.floor((performance.now() - t0) / (1000 / 24)) + off;
-      var ff = f % 24, s = Math.floor(f / 24), p = function (n) { return (n < 10 ? '0' : '') + n; };
-      tc.textContent = '00:' + p(Math.floor(s / 60) % 60) + ':' + p(s % 60) + ':' + p(ff);
-    }, 1000 / 24);
-  }
+  (function () {
+    var box = document.getElementById('hs'), sl = box.querySelectorAll('.hs'), i = 0, timer = null, n = sl.length;
+    var link = document.getElementById('hs-link'), cnt = document.getElementById('hs-count'), dots = document.getElementById('hs-dots');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var p2 = function (x) { return (x < 10 ? '0' : '') + x; };
+    for (var k = 0; k < n; k++) (function (k) {
+      var b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', 'Photo ' + (k + 1));
+      b.onclick = function () { go(k); }; dots.appendChild(b);
+    })(k);
+    function go(j) {
+      sl[i].classList.remove('on'); dots.children[i].classList.remove('on');
+      i = (j + n) % n;
+      sl[i].classList.add('on'); dots.children[i].classList.add('on');
+      link.innerHTML = sl[i].getAttribute('data-name');
+      link.href = '#karya-' + sl[i].getAttribute('data-slug');
+      cnt.textContent = p2(i + 1) + ' / ' + p2(n);
+      var nx = sl[(i + 1) % n].querySelector('img'); nx.loading = 'eager';
+    }
+    function play() { stop(); if (!reduce) timer = setInterval(function () { go(i + 1); }, 5000); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    document.querySelector('.hs-prev').onclick = function () { go(i - 1); play(); };
+    document.querySelector('.hs-next').onclick = function () { go(i + 1); play(); };
+    var fr = box.parentNode, x0 = null;
+    fr.addEventListener('mouseenter', stop); fr.addEventListener('mouseleave', play);
+    fr.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; stop(); }, { passive: true });
+    fr.addEventListener('touchend', function (e) {
+      if (x0 !== null) { var dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1)); }
+      x0 = null; play();
+    });
+    fr.setAttribute('tabindex', '0');
+    fr.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft') { go(i - 1); play(); } else if (e.key === 'ArrowRight') { go(i + 1); play(); } });
+    go(0); play();
+  })();
 
   // ---- Karya ----
   var CAT = { foto: 'Photo', film: 'Video', editing: 'Editing' };
 
   // ---- Projects (real photos) ----
-  // To add a project: put its photos in a folder as NN.jpg (large) and NN-t.jpg (thumbnail), then add an entry below.
+  // Media folders: Img1, Img2, Img3 ... each holds at most 100 photos and videos (a photo counts once, with its thumbnail). Img1 and Img2 are full, so new work goes in Img3 until it reaches 100, then Img4.
+  // To add a project: put its photos in Img#/NAME/ as NN.jpg (large) and NN-t.jpg (thumbnail), then add an entry below with dir: 'Img#/NAME'.
   var PROJECTS = [
     {
-      slug: 'efrata-product', dir: 'efrata-product', name: 'Furniture',
+      slug: 'efrata-product', dir: 'Img1/efrata-product', name: 'Furniture',
       kicker: 'Photo &middot; Product', sub: 'Product', meta: 'Product Photography',
       lead: 'Product photography for Efrata Furniture in 2026: sofas, dining sets, coffee tables, and accent chairs, styled in bright rooms and shot close up to show the material and craftsmanship. Click a photo to enlarge it.',
       facts: [['Client', 'Efrata Furniture'], ['Service', 'Product photography'], ['Year', '2026']],
@@ -893,7 +923,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       ]
     },
     {
-      slug: 'efrata-furniture', dir: 'efrata', name: 'Efrata Furniture',
+      slug: 'efrata-furniture', dir: 'Img1/efrata', name: 'Efrata Furniture',
       kicker: 'Photo &middot; Interior', sub: 'Interior', meta: 'Company interior photography',
       lead: 'Interior documentation for Efrata Furniture: living rooms, bedrooms, the kitchen, and material details such as stone walls, wood, and bouclé fabric. Click a photo to enlarge it.',
       facts: [['Client', 'Efrata Furniture'], ['Service', 'Interior photography'], ['Location', 'Villa Canggu, Bali'], ['Year', '2026']],
@@ -914,7 +944,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       ]
     },
     {
-      slug: 'mr-d', dir: 'mrd', name: 'Mr. D',
+      slug: 'mr-d', dir: 'Img1/mrd', name: 'Mr. D',
       kicker: 'Photo &middot; Architecture', sub: 'Architecture', meta: 'Contractor project photography',
       lead: 'Architectural photography of a contractor project for Mr. D: the pool terrace, perforated facade screens, covered walkways, living areas, and details of stone, timber, and glass. Click a photo to enlarge it.',
       facts: [['Client', 'Mr. D'], ['Service', 'Architectural photography']],
@@ -934,7 +964,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       ]
     },
     {
-      slug: 'binus-semarang-graduation', dir: 'binus', name: 'Joe, Marvel, &amp; Lorenzo',
+      slug: 'binus-semarang-graduation', dir: 'Img1/binus', name: 'Joe, Marvel, &amp; Lorenzo',
       kicker: 'Photo &middot; Graduation', sub: 'Graduation', meta: 'Graduation photography<br>@yourname.grad',
       lead: 'Graduation portraits for Joe, Marvel, &amp; Lorenzo at Bina Nusantara University, Semarang, shot across the campus: a moody elevator set, the terracotta brick facade, the court, and a railing overlooking the sea. Produced under @yourname.grad. Click a photo to enlarge it.',
       facts: [['Clients', 'Joe, Marvel, &amp; Lorenzo'], ['Service', 'Graduation photography'], ['Location', 'Bina Nusantara University, Semarang'], ['Vendor', '@yourname.grad']],
@@ -955,7 +985,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       ]
     },
     {
-      slug: 'nathania-graduation', dir: 'nathania', name: 'Nathania',
+      slug: 'nathania-graduation', dir: 'Img1/nathania', name: 'Nathania',
       kicker: 'Photo &middot; Graduation', sub: 'Graduation', meta: 'Graduation photography<br>@yourname.grad',
       lead: 'Graduation portraits for Nathania at Prasetiya Mulya University in BSD, 2024: the lecture hall, the glass-walled bridge, the campus garden, and a few quiet frames in black and white. Produced under @yourname.grad. Click a photo to enlarge it.',
       facts: [['Client', 'Nathania'], ['Service', 'Graduation photography'], ['Location', 'Prasetiya Mulya University, BSD'], ['Year', '2024'], ['Vendor', '@yourname.grad']],
@@ -973,7 +1003,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       ]
     },
     {
-      slug: 'marina', dir: 'marina', name: 'Marina',
+      slug: 'marina', dir: 'Img1/marina', name: 'Marina',
       kicker: 'Photo &middot; Private event', sub: 'Private birthday', meta: 'Private birthday photography',
       lead: 'Candid and group photography at a private birthday celebration at Marina Beach in 2026: relaxed conversations by the sea, shared food, and a group portrait on the shore. Click a photo to enlarge it.',
       facts: [['Event', 'Private birthday'], ['Service', 'Event photography'], ['Location', 'Marina Beach'], ['Year', '2026']],
@@ -991,7 +1021,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       ]
     },
     {
-      slug: 'sineroom-alliance-francaise-day-1', dir: 'sine1', name: 'Sineroom X Alliance Française Day 1',
+      slug: 'sineroom-alliance-francaise-day-1', dir: 'Img1/sine1', name: 'Sineroom X Alliance Française Day 1',
       kicker: 'Photo &middot; Event', sub: 'Film Screening', meta: 'Event Photography',
       lead: 'Event photography from the first day of Festival Sinema Prancis 2025, a collaboration between Sineroom and Alliance Française: guest registration, the film screening, the talk on stage, audience questions, and group portraits. Click a photo to enlarge it.',
       facts: [['Event', 'Film Screening'], ['Service', 'Event photography'], ['Year', '2025'], ['Collaboration', 'Sineroom X Alliance Française']],
@@ -1020,7 +1050,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       ]
     },
     {
-      slug: 'sineroom-alliance-francaise-day-2', dir: 'sine2', name: 'Sineroom X Alliance Française Day 2',
+      slug: 'sineroom-alliance-francaise-day-2', dir: 'Img2/sine2', name: 'Sineroom X Alliance Française Day 2',
       kicker: 'Photo &middot; Event', sub: 'Film Screening', meta: 'Event Photography',
       lead: 'Event photography from the second day of Festival Sinema Prancis 2025, a collaboration between Sineroom and Alliance Française in Semarang: guest registration at the entrance, the film screening on the blue carpet, the talk on French cinema, and quiet moments among the audience. Click a photo to enlarge it.',
       facts: [['Event', 'Film Screening'], ['Service', 'Event photography'], ['Year', '2025'], ['Collaboration', 'Sineroom X Alliance Française']],
@@ -1053,7 +1083,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       ]
     },
     {
-      slug: 'sineroom-ritual-untuk-kawan', dir: 'sine3', name: 'Sineroom Ritual Untuk Kawan',
+      slug: 'sineroom-ritual-untuk-kawan', dir: 'Img2/sine3', name: 'Sineroom Ritual Untuk Kawan',
       kicker: 'Photo &middot; Event', sub: 'Film Screening', meta: 'Event Photography',
       lead: 'Event photography from Ritual untuk Kawan, a Sineroom film screening and discussion held in 2025 after the floods in Sumatra: films on the projector, the host and guest speaker on stage, audience questions, and quiet moments among the viewers. Click a photo to enlarge it.',
       facts: [['Event', 'Film Screening'], ['Service', 'Event photography'], ['Year', '2025'], ['Location', 'Klarisan Coffee &amp; Eatery']],
@@ -1080,7 +1110,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       ]
     },
     {
-      slug: 'natal-ktb-gkt-semarang-barat', dir: 'natal', name: 'Natal KTB GKT Semarang Barat',
+      slug: 'natal-ktb-gkt-semarang-barat', dir: 'Img2/natal', name: 'Natal KTB GKT Semarang Barat',
       kicker: 'Photo &middot; Event', sub: 'Christmas Event', meta: 'Event Photography',
       lead: 'Event photography from the Christmas gathering of the GKT congregation in West Semarang, held in 2025 at Kampung Laut before the new year: warm conversations around the table, laughter, songs, and everyone standing together to sing. Click a photo to enlarge it.',
       facts: [['Event', 'Christmas Event'], ['Service', 'Event photography'], ['Year', '2025'], ['Location', 'Kampung Laut']],
@@ -1109,7 +1139,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       ]
     },
     {
-      slug: 'pengasapan-ikan', dir: 'asap', name: 'Pengasapan Ikan',
+      slug: 'pengasapan-ikan', dir: 'Img2/asap', name: 'Pengasapan Ikan',
       kicker: 'Photo &middot; Personal', sub: 'Hobby', meta: 'Street Photography',
       lead: 'A personal street photography series shot in 2025 at a traditional fish smokehouse in Semarang, made for the Focus Nusantara X NyetritWengi event. The series won the event&rsquo;s fun challenge. Click a photo to enlarge it.',
       facts: [['Category', 'Hobby'], ['Genre', 'Street photography'], ['Location', 'Fish smokehouse, Semarang'], ['Year', '2025'], ['Event', 'Focus Nusantara X NyetritWengi'], ['Award', 'Fun challenge winner']],
@@ -1125,7 +1155,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       ]
     },
     {
-      slug: 'model-x-kota-lama', dir: 'kotalama', name: 'Model X Kota Lama',
+      slug: 'model-x-kota-lama', dir: 'Img2/kotalama', name: 'Model X Kota Lama',
       kicker: 'Photo &middot; Personal', sub: 'Hobby', meta: 'Street Photography',
       lead: 'A personal street photography series shot in 2025 in Kota Lama, Semarang, at the Bursa Kamera X Fujifilm event: a portrait of a model, the old colonial buildings, and everyday life on the streets. The series won the event&rsquo;s challenge. Click a photo to enlarge it.',
       facts: [['Category', 'Hobby'], ['Genre', 'Street photography'], ['Location', 'Kota Lama, Semarang'], ['Year', '2025'], ['Event', 'Bursa Kamera X Fujifilm'], ['Award', 'Challenge winner']],
@@ -1142,7 +1172,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       ]
     },
     {
-      slug: 'night-market-simpang-lima', dir: 'pasarmalam', name: 'Night Market Simpang Lima',
+      slug: 'night-market-simpang-lima', dir: 'Img2/pasarmalam', name: 'Night Market Simpang Lima',
       kicker: 'Photo &middot; Personal', sub: 'Hobby', meta: 'Street Photography',
       lead: 'A personal street photography series from the night market at Simpang Lima, Semarang, shot in 2026 during Nyetrit Wengi. Slow shutter speeds turn the spinning rides into streaks of colour, while fast shutter speeds freeze the people, the stalls, and the wall-of-death riders. Click a photo to enlarge it.',
       facts: [['Category', 'Hobby'], ['Genre', 'Street photography'], ['Location', 'Simpang Lima, Semarang'], ['Year', '2026'], ['Event', 'Nyetrit Wengi'], ['Technique', 'Slow and fast shutter speeds']],
@@ -1162,7 +1192,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       ]
     },
     {
-      slug: 'gang-baru-market', dir: 'gangbaru', name: 'Gang Baru Market',
+      slug: 'gang-baru-market', dir: 'Img2/gangbaru', name: 'Gang Baru Market',
       kicker: 'Photo &middot; Personal', sub: 'Hobby', meta: 'Street Photography',
       lead: 'A personal street photography series from Pasar Gang Baru in Semarang, shot in 2026 during a Komunitas Fotografer Semarang event: the busy market, the people who sell there, and the everyday scenes between the stalls. Click a photo to enlarge it.',
       facts: [['Category', 'Hobby'], ['Genre', 'Street photography'], ['Location', 'Pasar Gang Baru, Semarang'], ['Year', '2026'], ['Event', 'Komunitas Fotografer Semarang']],
@@ -1180,7 +1210,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       ]
     },
     {
-      slug: 'gebyuran-bustaman', dir: 'gebyuran', name: 'Gebyuran Bustaman',
+      slug: 'gebyuran-bustaman', dir: 'Img3/gebyuran', name: 'Gebyuran Bustaman',
       kicker: 'Photo &middot; Personal', sub: 'Hobby', meta: 'Street Photography',
       lead: 'A personal street photography series from Kampung Bustaman, Semarang, shot in 2026 during the Gebyuran Bustaman festival, where residents and visitors throw water at one another and get soaked together in the narrow alleys. Click a photo to enlarge it.',
       facts: [['Category', 'Hobby'], ['Genre', 'Street photography'], ['Location', 'Bustaman, Semarang'], ['Year', '2026'], ['Event', 'Gebyuran Bustaman']],
@@ -1195,7 +1225,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       ]
     },
     {
-      slug: 'bergota-market', dir: 'bergota', name: 'Bergota Market',
+      slug: 'bergota-market', dir: 'Img3/bergota', name: 'Bergota Market',
       kicker: 'Photo &middot; Personal', sub: 'Hobby', meta: 'Street Photography',
       lead: 'A personal street photography series from Pasar Randusari and the hill of Bergota in Semarang, shot in 2026 during Nyetrit Wengi: the market stalls and the people who run them, the flower sellers, and the streets and views found while walking around the hill. Click a photo to enlarge it.',
       facts: [['Category', 'Hobby'], ['Genre', 'Street photography'], ['Location', 'Pasar Randusari &amp; Bergota Hill, Semarang'], ['Year', '2026'], ['Event', 'Nyetrit Wengi']],
@@ -1227,10 +1257,10 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
     return f;
   }
   // ---- Video projects ----
-  // To add one: put NAME.mp4 (vertical 9:16) and NAME.jpg (poster) in a folder, then add an entry below.
+  // To add one: put NAME.mp4 and NAME.jpg (poster) in the current Img# folder (see the note above), then add an entry below with dir: 'Img#/NAME'. Vertical 9:16 by default; set ratio: '16/9' for landscape.
   var VPROJECTS = [
     {
-      slug: 'efrata-videos', dir: 'efrata-video', name: 'Furniture',
+      slug: 'efrata-videos', dir: 'Img3/efrata-video', name: 'Furniture',
       kicker: 'Video &middot; Product', sub: 'Product videos', meta: 'Vertical product films',
       lead: 'Product videos made for Efrata Furniture, each one shot and edited to present the piece as refined, high-end furniture. Hover a video to play it.',
       facts: [['Client', 'Efrata Furniture'], ['Service', 'Video production and editing'], ['Format', 'Vertical 9:16']],
@@ -1243,7 +1273,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       ]
     },
     {
-      slug: 'monolog-videos', dir: 'monolog-video', name: 'Monolog Furniture',
+      slug: 'monolog-videos', dir: 'Img3/monolog-video', name: 'Monolog Furniture',
       kicker: 'Video &middot; Monolog', sub: 'Monolog Video', meta: 'Vertical monolog videos',
       lead: 'Monolog videos for Monolog Furniture, with Louisa, Faren, and Jeanne. Hover a video to play it.',
       facts: [['Client', 'Monolog Furniture'], ['Service', 'Video production and editing'], ['Format', 'Vertical 9:16']],
@@ -1255,7 +1285,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       ]
     },
     {
-      slug: 'efrata-company-profile', dir: 'efrata-profile', name: 'Furniture', ratio: '16/9',
+      slug: 'efrata-company-profile', dir: 'Img3/efrata-profile', name: 'Furniture', ratio: '16/9',
       kicker: 'Video &middot; Company Profile', sub: 'Company Profile', meta: 'Company profile film',
       lead: 'A company profile film for Efrata Furniture, made in Semarang in 2026. It introduces the company, from the workshop floor to the finished pieces in real homes. Hover the video to play it.',
       facts: [['Client', 'Efrata Furniture'], ['Service', 'Video production and editing'], ['Location', 'Semarang'], ['Year', '2026'], ['Format', 'Landscape 16:9']],
@@ -1265,7 +1295,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       ]
     },
     {
-      slug: 'mas-video-profile', dir: 'mas', name: 'MAS Video Profile',
+      slug: 'mas-video-profile', dir: 'Img3/mas', name: 'MAS Video Profile',
       kicker: 'Video &middot; Company Profile', sub: 'Company Profile', meta: 'Company profile film',
       lead: 'A company profile video for MAS (Makmur Abadi Sentosa Elektronik), made in 2025 to introduce MAS as a distributor of electronic spare parts. Hover the video to play it.',
       facts: [['Client', 'MAS &middot; Makmur Abadi Sentosa'], ['Service', 'Video production and editing'], ['Year', '2025'], ['Format', 'Vertical 9:16']],
@@ -1364,7 +1394,15 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
   var grid = document.getElementById('grid'), teaser = document.getElementById('teaser');
   PROJECTS.forEach(function (P) { grid.appendChild(projectTile(P)); });
   VPROJECTS.forEach(function (P) { grid.appendChild(videoCard(P)); });
-  PROJECTS.slice(0, 3).forEach(function (P) { teaser.appendChild(projectTile(P)); });
+  // Home selection: landscape frames only (3:2 crop). [slug, photo file] for photos; [slug, null] for a landscape video.
+  [['efrata-furniture', '11'], ['mr-d', '03'], ['efrata-company-profile', null],
+   ['night-market-simpang-lima', '01'], ['gang-baru-market', '05'], ['pengasapan-ikan', '05']].forEach(function (x) {
+    var vid = !x[1], P = (vid ? VPROJECTS : PROJECTS).filter(function (q) { return q.slug === x[0]; })[0];
+    var t = vid ? videoCard(P) : projectTile(P);
+    if (!vid) t.querySelector('img').src = P.dir + '/' + x[1] + '-t.jpg';
+    var ph = t.querySelector('.ph'); ph.style.aspectRatio = '3 / 2';
+    teaser.appendChild(t);
+  });
   document.getElementById('count').textContent = grid.children.length + ' frames';
 
   // Lightbox (shared by all project galleries)
