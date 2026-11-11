@@ -5,7 +5,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300..600&family=Playfair+Display:ital,wght@0,400..600;1,400..600&display=swap">
 <style>
-/* Layout: multi-page site routed by hash (Beranda, Karya, Kalender, Kontak). Oversized italic headline above a letterboxed 2.39:1 viewfinder frame; contact-sheet portfolio on flowing columns; interactive production calendar. Single light look by choice, with dark imagery as the contrast. */
+/* Layout: multi-page site routed by hash (Home, Work, Calendar, Contact). Oversized italic headline above a letterboxed 2.39:1 viewfinder frame; contact-sheet portfolio on flowing columns; interactive production calendar. Single light look by choice, with dark imagery as the contrast. */
 :root {
   --bg: #ffffff;
   --surface: #f3f3f0;
@@ -351,20 +351,20 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
 
 <header class="bar">
   <div class="wrap bar-in">
-    <a class="brand" href="#beranda">Oei Ricky<small>Photo &middot; Film</small></a>
+    <a class="brand" href="#home">Oei Ricky<small>Photo &middot; Film</small></a>
     <nav class="nav" aria-label="Main navigation">
-      <a href="#beranda">Home</a>
-      <a href="#karya">Work</a>
-      <a href="#kalender">Calendar</a>
-      <a href="#kontak">Contact</a>
+      <a href="#home">Home</a>
+      <a href="#work">Work</a>
+      <a href="#calendar">Calendar</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <a class="btn btn-sm" href="#kalender">Check dates</a>
+    <a class="btn btn-sm" href="#calendar">Check dates</a>
   </div>
 </header>
 
 <main>
   <!-- ============ BERANDA ============ -->
-  <div id="page-beranda" data-page="beranda">
+  <div id="page-home" data-page="home">
     <section class="hero wrap">
       <div class="about">
         <div class="about-copy">
@@ -372,8 +372,8 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
           <h1 class="about-title">About Me</h1>
           <p class="about-text" lang="id">Hi, Saya Oei Ricky Wijaya, Lulusan Film di Universitas Multimedia Nusantara. Saya berpengalaman dalam dunia marketing dan kreatif. Keahlian saya menjadi producer, videografer, fotografer, editor, dan motion graphic. Dalam setiap proyek, saya menggabungkan keindahan visual dengan storytelling yang memiliki kesan premium untuk corporate dari company profile, commercial, sampai kebutuhan sosial media dan saya juga melakukan video dan photo untuk acara personal.</p>
           <div class="cta-row">
-            <a class="btn" href="#kontak">Tell me about your project</a>
-            <a class="link" href="#karya">View work</a>
+            <a class="btn" href="#contact">Tell me about your project</a>
+            <a class="link" href="#work">View work</a>
           </div>
         </div>
         <figure class="about-photo">
@@ -396,7 +396,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
         </div>
         <button class="hs-nav hs-prev" type="button" aria-label="Previous photo">&#8249;</button>
         <button class="hs-nav hs-next" type="button" aria-label="Next photo">&#8250;</button>
-        <div class="hs-cap"><a id="hs-link" href="#karya"></a><span class="hs-count" id="hs-count"></span></div>
+        <div class="hs-cap"><a id="hs-link" href="#work"></a><span class="hs-count" id="hs-count"></span></div>
         <div class="hs-dots" id="hs-dots"></div>
       </figure>
     </div>
@@ -408,7 +408,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
             <p class="label">Selected work</p>
             <h2>A selection from the contact sheet.</h2>
           </div>
-          <a class="link" href="#karya">View all work</a>
+          <a class="link" href="#work">View all work</a>
         </div>
         <div class="grid" id="teaser"></div>
       </div>
@@ -531,15 +531,15 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
           <h2>Already have a date in mind?</h2>
         </div>
         <div class="cta-row">
-          <a class="btn" href="#kalender">Check the production calendar</a>
-          <a class="link" href="#kontak">Contact me</a>
+          <a class="btn" href="#calendar">Check the production calendar</a>
+          <a class="link" href="#contact">Contact me</a>
         </div>
       </div>
     </section>
   </div>
 
   <!-- ============ KARYA ============ -->
-  <div id="page-karya" data-page="karya" hidden>
+  <div id="page-work" data-page="work" hidden>
     <div class="wrap page-head">
       <div class="sec-head">
         <div class="title">
@@ -561,7 +561,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
   <!-- Project pages (Efrata Furniture, Mr. D, ...) are generated from PROJECTS in the script. -->
 
   <!-- ============ KALENDER ============ -->
-  <div id="page-kalender" data-page="kalender" hidden>
+  <div id="page-calendar" data-page="calendar" hidden>
     <div class="wrap page-head">
       <p class="label">Production calendar</p>
       <h1 class="ptitle" style="margin-top:14px">Pick your date.</h1>
@@ -593,7 +593,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
   </div>
 
   <!-- ============ KONTAK ============ -->
-  <div id="page-kontak" data-page="kontak" hidden>
+  <div id="page-contact" data-page="contact" hidden>
     <div class="wrap page-head">
       <p class="label">Contact</p>
       <h1 class="ptitle" style="margin-top:14px">Tell me about your project.</h1>
@@ -622,7 +622,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
               <div class="soc"><a href="https://www.instagram.com/oeirickyw/" target="_blank" rel="noopener" aria-label="Instagram @oeirickyw"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.youtube.com/@oeiricky" target="_blank" rel="noopener" aria-label="YouTube @oeiricky"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z" fill="currentColor" stroke="none"/></svg></a></div>
             </div>
           </div>
-          <a class="link" href="#kalender" style="justify-self:start">View the production calendar</a>
+          <a class="link" href="#calendar" style="justify-self:start">View the production calendar</a>
         </div>
         <form class="brief" id="brief" autocomplete="off">
           <div class="fld">
@@ -685,10 +685,10 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
   <div class="wrap foot-in">
     <span>&copy; 2026 Oei Ricky. All rights reserved.</span>
     <nav aria-label="Footer navigation">
-      <a href="#beranda">Home</a>
-      <a href="#karya">Work</a>
-      <a href="#kalender">Calendar</a>
-      <a href="#kontak">Contact</a>
+      <a href="#home">Home</a>
+      <a href="#work">Work</a>
+      <a href="#calendar">Calendar</a>
+      <a href="#contact">Contact</a>
     </nav>
     <div class="soc"><a href="https://www.instagram.com/oeirickyw/" target="_blank" rel="noopener" aria-label="Instagram @oeirickyw"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.youtube.com/@oeiricky" target="_blank" rel="noopener" aria-label="YouTube @oeiricky"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z" fill="currentColor" stroke="none"/></svg></a></div>
   </div>
@@ -862,7 +862,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       i = (j + n) % n;
       sl[i].classList.add('on'); dots.children[i].classList.add('on');
       link.innerHTML = sl[i].getAttribute('data-name');
-      link.href = '#karya-' + sl[i].getAttribute('data-slug');
+      link.href = '#work-' + sl[i].getAttribute('data-slug');
       cnt.textContent = p2(i + 1) + ' / ' + p2(n);
       var nx = sl[(i + 1) % n].querySelector('img'); nx.loading = 'eager';
     }
@@ -1249,11 +1249,11 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
     var f = document.createElement('figure'), c = P.photos[P.cover];
     f.className = 'tile'; f.dataset.cat = 'foto';
     f.innerHTML =
-      '<a class="ph-link" href="#karya-' + P.slug + '" tabindex="-1" aria-hidden="true">' +
+      '<a class="ph-link" href="#work-' + P.slug + '" tabindex="-1" aria-hidden="true">' +
       '<div class="ph" style="aspect-ratio:' + c.w + '/' + c.h + '">' +
       '<img src="' + P.dir + '/' + c.f + '-t.jpg" width="' + c.w + '" height="' + c.h + '" alt="" loading="lazy">' +
       '<span class="no"></span><span class="cat">Photo</span><span class="open">View project &rarr;</span></div></a>' +
-      '<figcaption><strong><a href="#karya-' + P.slug + '">' + P.name + '</a></strong><span>' + P.sub + ' &middot; ' + P.photos.length + ' photos</span><span class="meta">' + P.meta + '</span></figcaption>';
+      '<figcaption><strong><a href="#work-' + P.slug + '">' + P.name + '</a></strong><span>' + P.sub + ' &middot; ' + P.photos.length + ' photos</span><span class="meta">' + P.meta + '</span></figcaption>';
     return f;
   }
   // ---- Video projects ----
@@ -1334,11 +1334,11 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
     var f = document.createElement('figure'), c = P.videos[P.cover], rt = P.ratio || '9/16', wide = rt === '16/9';
     f.className = 'tile'; f.dataset.cat = 'film';
     f.innerHTML =
-      '<a class="ph-link" href="#karya-' + P.slug + '" tabindex="-1" aria-hidden="true">' +
+      '<a class="ph-link" href="#work-' + P.slug + '" tabindex="-1" aria-hidden="true">' +
       '<div class="ph" style="aspect-ratio:' + rt + '">' +
       '<img src="' + P.dir + '/' + c.f + '.jpg" width="' + (wide ? 960 : 540) + '" height="' + (wide ? 540 : 960) + '" alt="" loading="lazy">' +
       '<span class="no"></span><span class="cat">Video</span><span class="play" aria-hidden="true"></span><span class="open">View videos &rarr;</span></div></a>' +
-      '<figcaption><strong><a href="#karya-' + P.slug + '">' + P.name + '</a></strong><span>' + P.sub + ' &middot; ' + P.videos.length + (P.videos.length === 1 ? ' video' : ' videos') + '</span><span class="meta">' + P.meta + '</span></figcaption>';
+      '<figcaption><strong><a href="#work-' + P.slug + '">' + P.name + '</a></strong><span>' + P.sub + ' &middot; ' + P.videos.length + (P.videos.length === 1 ? ' video' : ' videos') + '</span><span class="meta">' + P.meta + '</span></figcaption>';
     return f;
   }
   function videoItem(P, v) {
@@ -1372,23 +1372,23 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
   }
   function buildVideoPage(P) {
     var page = document.createElement('div');
-    page.id = 'page-karya-' + P.slug; page.dataset.page = 'karya-' + P.slug; page.hidden = true;
+    page.id = 'page-work-' + P.slug; page.dataset.page = 'work-' + P.slug; page.hidden = true;
     var facts = P.facts.concat([['Videos', String(P.videos.length)]]).map(function (x) {
       return '<div><dt>' + x[0] + '</dt><dd>' + x[1] + '</dd></div>';
     }).join('');
     page.innerHTML =
       '<div class="wrap page-head">' +
-      '<a class="link back" href="#karya">&larr; All work</a>' +
+      '<a class="link back" href="#work">&larr; All work</a>' +
       '<p class="label" style="margin-top:32px">' + P.kicker + '</p>' +
       '<h1 class="ptitle" style="margin-top:14px">' + P.name + '</h1>' +
       '<p class="lead">' + P.lead + '</p>' +
       '<dl class="proj-meta">' + facts + '</dl></div>' +
       '<div class="wrap pg"><div class="vgrid' + (P.ratio === '16/9' ? ' wide' : (P.videos.length === 1 ? ' solo' : '')) + '"></div>' +
       '<div class="proj-cta"><p class="cta-line">Have a product you want to present beautifully?</p>' +
-      '<div class="cta-row"><a class="btn" href="#kontak">Tell me about your project</a><a class="link" href="#karya">See other work</a></div></div></div>';
+      '<div class="cta-row"><a class="btn" href="#contact">Tell me about your project</a><a class="link" href="#work">See other work</a></div></div></div>';
     var g = page.querySelector('.vgrid');
     P.videos.forEach(function (v) { g.appendChild(videoItem(P, v)); });
-    var cal = document.getElementById('page-kalender');
+    var cal = document.getElementById('page-calendar');
     cal.parentNode.insertBefore(page, cal);
   }
   var grid = document.getElementById('grid'), teaser = document.getElementById('teaser');
@@ -1441,13 +1441,13 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
   // Project pages (one per project, inserted before the Calendar page)
   function buildProjectPage(P) {
     var page = document.createElement('div');
-    page.id = 'page-karya-' + P.slug; page.dataset.page = 'karya-' + P.slug; page.hidden = true;
+    page.id = 'page-work-' + P.slug; page.dataset.page = 'work-' + P.slug; page.hidden = true;
     var facts = P.facts.concat([['Photos', String(P.photos.length)]]).map(function (x) {
       return '<div><dt>' + x[0] + '</dt><dd>' + x[1] + '</dd></div>';
     }).join('');
     page.innerHTML =
       '<div class="wrap page-head">' +
-      '<a class="link back" href="#karya">&larr; All work</a>' +
+      '<a class="link back" href="#work">&larr; All work</a>' +
       '<p class="label" style="margin-top:32px">' + P.kicker + '</p>' +
       '<h1 class="ptitle" style="margin-top:14px">' + P.name + '</h1>' +
       '<p class="lead">' + P.lead + '</p>' +
@@ -1455,7 +1455,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       (P.impact ? '<p class="impact"><span>Result</span>' + P.impact + '</p>' : '') + '</div>' +
       '<div class="wrap pg"><div class="gallery"></div>' +
       '<div class="proj-cta"><p class="cta-line">Have a space you want documented?</p>' +
-      '<div class="cta-row"><a class="btn" href="#kontak">Tell me about your project</a><a class="link" href="#karya">See other work</a></div></div></div>';
+      '<div class="cta-row"><a class="btn" href="#contact">Tell me about your project</a><a class="link" href="#work">See other work</a></div></div></div>';
     var gal = page.querySelector('.gallery');
     P.photos.forEach(function (p, i) {
       var b = document.createElement('button');
@@ -1465,7 +1465,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       b.addEventListener('click', function () { openLb(P, i, b); });
       gal.appendChild(b);
     });
-    var cal = document.getElementById('page-kalender');
+    var cal = document.getElementById('page-calendar');
     cal.parentNode.insertBefore(page, cal);
   }
   PROJECTS.forEach(buildProjectPage);
@@ -1568,11 +1568,11 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
     if (!sel) return;
     document.getElementById('f-tanggal').value = fmt(sel);
     sync();
-    location.hash = '#kontak';
+    location.hash = '#contact';
   });
   renderTabs(); renderGrid(); updatePick();
 
-  // ---- Brief dan kontak ----
+  // ---- Brief dan contact ----
   function copy(text, btn) {
     var label = btn.dataset.label || btn.textContent; btn.dataset.label = label;
     function done() { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = label; }, 1600); }
@@ -1600,12 +1600,16 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
   document.getElementById('copy-mail').addEventListener('click', function () { copy(document.getElementById('mail').textContent, this); });
 
   // ---- Navigasi antar halaman (hash) ----
-  var ROUTES = ['beranda', 'karya'].concat(PROJECTS.concat(VPROJECTS).map(function (P) { return 'karya-' + P.slug; }), ['kalender', 'kontak']);
+  var ROUTES = ['home', 'work'].concat(PROJECTS.concat(VPROJECTS).map(function (P) { return 'work-' + P.slug; }), ['calendar', 'contact']);
   var links = document.querySelectorAll('.nav a');
   function route() {
     var h = (location.hash || '').replace('#', '');
-    var name = ROUTES.indexOf(h) > -1 ? h : 'beranda';
-    var navName = name.indexOf('karya') === 0 ? 'karya' : name;
+    // Old Indonesian links still work: map them to the English routes.
+    var OLD = { beranda: 'home', karya: 'work', kalender: 'calendar', kontak: 'contact' };
+    var oldKey = h.split('-')[0];
+    if (OLD[oldKey]) { var fixed = OLD[oldKey] + h.slice(oldKey.length); if (ROUTES.indexOf(fixed) > -1) { h = fixed; history.replaceState(null, '', '#' + fixed); } }
+    var name = ROUTES.indexOf(h) > -1 ? h : 'home';
+    var navName = name.indexOf('work') === 0 ? 'work' : name;
     closeLb();
     document.querySelectorAll('.vid video').forEach(function (v) { v.pause(); });
     ROUTES.forEach(function (r) { document.getElementById('page-' + r).hidden = r !== name; });
