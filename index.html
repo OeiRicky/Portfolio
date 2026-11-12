@@ -1,5 +1,18 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Oei Ricky</title>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><base href="/"><link rel="canonical" href="https://oeiricky.my.id/"><script>window.PATHMODE=true</script>
+<title>Oei Ricky | Photographer, Videographer &amp; Editor in Indonesia</title>
+<meta name="description" content="Oei Ricky is a film graduate and creative producer offering event, product, interior and street photography, corporate and company-profile videos, and editing for brands and personal events.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Oei Ricky Wijaya">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Oei Ricky">
+<meta property="og:title" content="Oei Ricky | Photographer, Videographer &amp; Editor in Indonesia">
+<meta property="og:description" content="Oei Ricky is a film graduate and creative producer offering event, product, interior and street photography, corporate and company-profile videos, and editing for brands and personal events.">
+<meta property="og:image" content="https://oeiricky.my.id/Img1/efrata/06.jpg">
+<meta name="twitter:image" content="https://oeiricky.my.id/Img1/efrata/06.jpg">
+<meta property="og:url" content="https://oeiricky.my.id/">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Oei Ricky","alternateName":"Oei Ricky Wijaya","description":"Photography, videography and editing services: event, product, interior and street photography, corporate videos and company profiles.","url":"https://oeiricky.my.id/","image":"https://oeiricky.my.id/foto-ricky.jpg","email":"oeirickyw@gmail.com","telephone":"+6282324133256","areaServed":"Indonesia","serviceType":["Photography","Videography","Video editing"],"founder":{"@type":"Person","name":"Oei Ricky Wijaya","jobTitle":"Photographer, Videographer and Editor","alumniOf":"Universitas Multimedia Nusantara"}}</script>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -347,7 +360,8 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
-</style>
+</style><style>:root{color-scheme:light}html{scroll-padding-top:0}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<noscript><p>Oei Ricky: photography, video and editing. <a href="/">Home</a> | <a href="/work/">Work</a> | <a href="/calendar/">Calendar</a> | <a href="/contact/">Contact</a></p></noscript>
 
 <header class="bar">
   <div class="wrap bar-in">
@@ -862,7 +876,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       i = (j + n) % n;
       sl[i].classList.add('on'); dots.children[i].classList.add('on');
       link.innerHTML = sl[i].getAttribute('data-name');
-      link.href = '#work-' + sl[i].getAttribute('data-slug');
+      link.href = (window.PATHMODE ? '/work/' + sl[i].getAttribute('data-slug') + '/' : '#work-' + sl[i].getAttribute('data-slug'));
       cnt.textContent = p2(i + 1) + ' / ' + p2(n);
       var nx = sl[(i + 1) % n].querySelector('img'); nx.loading = 'eager';
     }
@@ -1251,7 +1265,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
     f.innerHTML =
       '<a class="ph-link" href="#work-' + P.slug + '" tabindex="-1" aria-hidden="true">' +
       '<div class="ph" style="aspect-ratio:' + c.w + '/' + c.h + '">' +
-      '<img src="' + P.dir + '/' + c.f + '-t.jpg" width="' + c.w + '" height="' + c.h + '" alt="" loading="lazy">' +
+      '<img src="' + P.dir + '/' + c.f + '-t.jpg" width="' + c.w + '" height="' + c.h + '" alt="' + (c.alt || P.name).replace(/"/g, '&quot;') + '" loading="lazy">' +
       '<span class="no"></span><span class="cat">Photo</span><span class="open">View project &rarr;</span></div></a>' +
       '<figcaption><strong><a href="#work-' + P.slug + '">' + P.name + '</a></strong><span>' + P.sub + ' &middot; ' + P.photos.length + ' photos</span><span class="meta">' + P.meta + '</span></figcaption>';
     return f;
@@ -1336,7 +1350,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
     f.innerHTML =
       '<a class="ph-link" href="#work-' + P.slug + '" tabindex="-1" aria-hidden="true">' +
       '<div class="ph" style="aspect-ratio:' + rt + '">' +
-      '<img src="' + P.dir + '/' + c.f + '.jpg" width="' + (wide ? 960 : 540) + '" height="' + (wide ? 540 : 960) + '" alt="" loading="lazy">' +
+      '<img src="' + P.dir + '/' + c.f + '.jpg" width="' + (wide ? 960 : 540) + '" height="' + (wide ? 540 : 960) + '" alt="' + (P.name + ' - ' + c.t).replace(/"/g, '&quot;') + '" loading="lazy">' +
       '<span class="no"></span><span class="cat">Video</span><span class="play" aria-hidden="true"></span><span class="open">View videos &rarr;</span></div></a>' +
       '<figcaption><strong><a href="#work-' + P.slug + '">' + P.name + '</a></strong><span>' + P.sub + ' &middot; ' + P.videos.length + (P.videos.length === 1 ? ' video' : ' videos') + '</span><span class="meta">' + P.meta + '</span></figcaption>';
     return f;
@@ -1461,7 +1475,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       var b = document.createElement('button');
       b.type = 'button'; b.className = 'shot';
       b.setAttribute('aria-label', 'Enlarge photo ' + (i + 1) + ': ' + p.alt);
-      b.innerHTML = '<img src="' + P.dir + '/' + p.f + '-t.jpg" width="' + p.w + '" height="' + p.h + '" alt="" loading="lazy">';
+      b.innerHTML = '<img src="' + P.dir + '/' + p.f + '-t.jpg" width="' + p.w + '" height="' + p.h + '" alt="' + (p.alt || P.name).replace(/"/g, '&quot;') + '" loading="lazy">';
       b.addEventListener('click', function () { openLb(P, i, b); });
       gal.appendChild(b);
     });
@@ -1568,7 +1582,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
     if (!sel) return;
     document.getElementById('f-tanggal').value = fmt(sel);
     sync();
-    location.hash = '#contact';
+    (window.__goTo || function () { location.hash = '#contact'; })('contact');
   });
   renderTabs(); renderGrid(); updatePick();
 
@@ -1602,22 +1616,69 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
   // ---- Navigasi antar halaman (hash) ----
   var ROUTES = ['home', 'work'].concat(PROJECTS.concat(VPROJECTS).map(function (P) { return 'work-' + P.slug; }), ['calendar', 'contact']);
   var links = document.querySelectorAll('.nav a');
+  // Deploy build sets window.PATHMODE: real paths (/work/mr-d/) instead of hash routes. The hosted preview keeps hash routes.
+  var PATHMODE = !!window.PATHMODE, SITE = 'https://oeiricky.my.id';
+  function pathFor(n) { return n === 'home' ? '/' : n === 'work' ? '/work/' : n.indexOf('work-') === 0 ? '/work/' + n.slice(5) + '/' : '/' + n + '/'; }
+  function nameFromPath(p) {
+    p = p.replace(/index\.html$/, '').replace(/\/+$/, '');
+    if (!p) return 'home';
+    var m = p.match(/^\/work\/([\w-]+)$/); if (m) return 'work-' + m[1];
+    m = p.match(/^\/(work|calendar|contact)$/); return m ? m[1] : 'home';
+  }
+  function nameFromHref(h) {
+    if (!h) return null;
+    if (h.charAt(0) === '#') return ROUTES.indexOf(h.slice(1)) > -1 ? h.slice(1) : null;
+    if (h.charAt(0) === '/' && h.charAt(1) !== '/') { var n = nameFromPath(h.split(/[?#]/)[0]); return (n !== 'home' || h.split(/[?#]/)[0] === '/') ? n : null; }
+    return null;
+  }
+  function plain(html) { var t = document.createElement('textarea'); t.innerHTML = html; return t.value; }
+  function setMeta(name) {
+    var title, desc, P = null;
+    if (name.indexOf('work-') === 0) P = PROJECTS.concat(VPROJECTS).filter(function (x) { return 'work-' + x.slug === name; })[0];
+    if (P) { title = plain(P.name) + ' (' + plain(P.sub) + ') | Oei Ricky'; desc = plain(P.lead).replace(/\s*(Click a photo to enlarge it\.|Hover (a|the) video to play it\.)\s*$/, ''); }
+    else if (name === 'work') { title = 'Selected Work: Photography and Video | Oei Ricky'; desc = 'Selected photography and video projects by Oei Ricky: events, products, interiors, street photography, corporate videos and company profiles.'; }
+    else if (name === 'calendar') { title = 'Production Calendar: Check Available Dates | Oei Ricky'; desc = 'Check which dates are open for a photo or video shoot with Oei Ricky, then send a booking brief.'; }
+    else if (name === 'contact') { title = 'Contact and Booking | Oei Ricky'; desc = 'Tell Oei Ricky about your project by WhatsApp or email: date, location, budget range and the story you want to tell.'; }
+    else { title = 'Oei Ricky | Photographer, Videographer & Editor in Indonesia'; desc = 'Oei Ricky is a film graduate and creative producer offering event, product, interior and street photography, corporate and company-profile videos, and editing for brands and personal events.'; }
+    document.title = title;
+    var d = document.querySelector('meta[name="description"]'); if (d) d.setAttribute('content', desc);
+    function og(k, v) { var m = document.querySelector('meta[property="' + k + '"]'); if (m) m.setAttribute('content', v); }
+    og('og:title', title); og('og:description', desc);
+    if (PATHMODE) {
+      var c = document.querySelector('link[rel="canonical"]');
+      if (!c) { c = document.createElement('link'); c.rel = 'canonical'; document.head.appendChild(c); }
+      c.href = SITE + pathFor(name); og('og:url', SITE + pathFor(name));
+    }
+  }
   function route() {
-    var h = (location.hash || '').replace('#', '');
+    var h = PATHMODE ? nameFromPath(location.pathname) : (location.hash || '').replace('#', '');
     // Old Indonesian links still work: map them to the English routes.
     var OLD = { beranda: 'home', karya: 'work', kalender: 'calendar', kontak: 'contact' };
     var oldKey = h.split('-')[0];
-    if (OLD[oldKey]) { var fixed = OLD[oldKey] + h.slice(oldKey.length); if (ROUTES.indexOf(fixed) > -1) { h = fixed; history.replaceState(null, '', '#' + fixed); } }
+    if (!PATHMODE && OLD[oldKey]) { var fixed = OLD[oldKey] + h.slice(oldKey.length); if (ROUTES.indexOf(fixed) > -1) { h = fixed; history.replaceState(null, '', '#' + fixed); } }
     var name = ROUTES.indexOf(h) > -1 ? h : 'home';
     var navName = name.indexOf('work') === 0 ? 'work' : name;
     closeLb();
     document.querySelectorAll('.vid video').forEach(function (v) { v.pause(); });
     ROUTES.forEach(function (r) { document.getElementById('page-' + r).hidden = r !== name; });
     links.forEach(function (a) {
-      if (a.getAttribute('href') === '#' + navName) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+      if (nameFromHref(a.getAttribute('href')) === navName) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     });
+    setMeta(name);
     window.scrollTo({ top: 0, behavior: 'instant' });
   }
+  function goTo(n) { if (PATHMODE) { history.pushState(null, '', pathFor(n)); route(); } else { location.hash = '#' + n; } }
+  if (PATHMODE) {
+    // Real, crawlable links; clicks are handled in-page without a reload.
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) { var n = nameFromHref(a.getAttribute('href')); if (n) a.setAttribute('href', pathFor(n)); });
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href]'); if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || a.target === '_blank') return;
+      var n = nameFromHref(a.getAttribute('href')); if (!n) return;
+      e.preventDefault(); goTo(n);
+    });
+    window.addEventListener('popstate', route);
+  }
+  window.__goTo = goTo;
   window.addEventListener('hashchange', route);
   route();
 })();
