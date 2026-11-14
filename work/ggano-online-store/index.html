@@ -13,6 +13,8 @@
 <meta property="og:site_name" content="Oei Ricky">
 <meta property="og:title" content="G-GANO Online Store (AI-assisted website) | Oei Ricky">
 <meta property="og:description" content="An online store for G-GANO, an Indonesian brand of premium men&#x27;s T-shirts, designed and built with AI. Shoppers browse the Casual and Graphic collections, choose a colour and size, fill a cart and send the whole order through WhatsApp, or continue on Shopee.">
+<meta property="og:image" content="https://oeiricky.my.id/Img5/web/ggano-online-store.jpg">
+<meta name="twitter:image" content="https://oeiricky.my.id/Img5/web/ggano-online-store.jpg">
 <meta property="og:url" content="https://oeiricky.my.id/work/ggano-online-store/">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Oei Ricky","alternateName":"Oei Ricky Wijaya","description":"Photography, videography and editing services: event, product, interior and street photography, corporate videos and company profiles.","url":"https://oeiricky.my.id/","logo":"https://oeiricky.my.id/logo.png","image":"https://oeiricky.my.id/foto-ricky.jpg","email":"oeirickyw@gmail.com","telephone":"+6282324133256","areaServed":"Indonesia","serviceType":["Photography","Videography","Video editing"],"founder":{"@type":"Person","name":"Oei Ricky Wijaya","jobTitle":"Photographer, Videographer and Editor","alumniOf":"Universitas Multimedia Nusantara"}}</script>
@@ -150,6 +152,11 @@ h1.hero-title em { font-style: italic; color: var(--accent); }
 .ph.ai-cover { display: grid; place-items: center; background: var(--surface); }
 .ph .ai-mark { font: italic 400 clamp(1.6rem, 3vw, 2.4rem)/1.1 var(--display); text-align: center; color: var(--fg); letter-spacing: .01em; }
 .ph .ai-mark.caps { font-style: normal; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; font-size: clamp(1.4rem, 2.6vw, 2rem); }
+.ph .ai-thumb { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s cubic-bezier(.2, .7, .2, 1); }
+.ph.has-thumb::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to bottom, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0) 32%, rgba(0, 0, 0, 0) 62%, rgba(0, 0, 0, .55)); }
+.tile:hover .ai-thumb { transform: scale(1.04); }
+.ai-shot { display: block; margin-top: clamp(8px, 2vw, 24px); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+.ai-shot img { display: block; width: 100%; height: auto; }
 .ph .ai-logo { width: 30%; height: auto; object-fit: contain; }
 .ai-points { list-style: none; margin: clamp(28px, 4vw, 48px) 0 clamp(28px, 4vw, 48px); padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: clamp(14px, 2vw, 24px); }
 .ai-points li { border-top: 1px solid var(--line); padding-top: 14px; }
@@ -579,7 +586,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
           <button class="chip" type="button" data-f="all" aria-pressed="true">All</button>
           <button class="chip" type="button" data-f="foto" aria-pressed="false">Photo</button>
           <button class="chip" type="button" data-f="film" aria-pressed="false">Video</button>
-          <button class="chip" type="button" data-f="ai" aria-pressed="false">AI Prompt</button>
+          <button class="chip" type="button" data-f="ai" aria-pressed="false">Website</button>
         </div>
       </div>
     </div>
@@ -1290,8 +1297,8 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
   // Work made with AI (websites, tools): shows the result only. Add an entry: slug, name, kicker, sub, meta, lead, facts, url, points.
   var APROJECTS = [
     {
-      slug: 'portfolio-website', dir: '', name: 'Oei Ricky Portfolio Website',
-      kicker: 'AI Prompt &middot; Web design', sub: 'AI-assisted website', meta: 'Portfolio website',
+      slug: 'portfolio-website', dir: '', name: 'Oei Ricky Portfolio Website', thumb: 'Img5/web/oeiricky-website.jpg', alt: 'Home page of the Oei Ricky portfolio website at oeiricky.my.id',
+      kicker: 'Website &middot; Web design', sub: 'AI-assisted website', meta: 'Portfolio website',
       lead: 'A portfolio website for photo, video and editing services, designed and built with AI. It brings together a cinematic hero slideshow, a contact-sheet gallery with filters, a production calendar and a booking brief that opens in WhatsApp, in a clean white layout that works on any screen.',
       facts: [['Type', 'Portfolio website'], ['Made with', 'AI'], ['Year', '2026'], ['Live site', 'oeiricky.my.id']],
       url: 'https://oeiricky.my.id',
@@ -1302,8 +1309,8 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       ]
     },
     {
-      slug: 'yournamephotographie-website', dir: '', name: 'YourName Photographie Website', mark: 'YourName<br>Photographie',
-      kicker: 'AI Prompt &middot; Web design', sub: 'AI-assisted website', meta: 'Photography studio website',
+      slug: 'yournamephotographie-website', dir: '', name: 'YourName Photographie Website', thumb: 'Img5/web/yournamephotographie-website.jpg', alt: 'Home page of the YourName Photographie website at yournamephotographie.web.id', mark: 'YourName<br>Photographie',
+      kicker: 'Website &middot; Web design', sub: 'AI-assisted website', meta: 'Photography studio website',
       lead: 'A one-page portfolio and booking website for a photography and videography studio in Semarang, designed and built with AI. It presents the studio, five signature services, selected work, the way of working and three packages, and ends with a booking form that sends the details to WhatsApp.',
       facts: [['Type', 'Portfolio and booking website'], ['Made with', 'AI'], ['Year', '2026'], ['Location', 'Semarang'], ['Live site', 'yournamephotographie.web.id']],
       url: 'https://yournamephotographie.web.id',
@@ -1314,8 +1321,8 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       ]
     },
     {
-      slug: 'ggano-online-store', dir: '', name: 'G-GANO Online Store', mark: 'G-GANO', markClass: 'caps',
-      kicker: 'AI Prompt &middot; Web design', sub: 'AI-assisted website', meta: 'Online store website',
+      slug: 'ggano-online-store', dir: '', name: 'G-GANO Online Store', thumb: 'Img5/web/ggano-online-store.jpg', alt: 'Home page of the G-GANO online store at ggano.web.id', mark: 'G-GANO', markClass: 'caps',
+      kicker: 'Website &middot; Web design', sub: 'AI-assisted website', meta: 'Online store website',
       lead: 'An online store for G-GANO, an Indonesian brand of premium men\'s T-shirts, designed and built with AI. Shoppers browse the Casual and Graphic collections, choose a colour and size, fill a cart and send the whole order through WhatsApp, or continue on Shopee.',
       facts: [['Type', 'Online store website'], ['Made with', 'AI'], ['Year', '2026'], ['Language', 'Indonesian'], ['Live site', 'ggano.web.id']],
       url: 'https://ggano.web.id',
@@ -1331,9 +1338,9 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
     f.className = 'tile'; f.dataset.cat = 'ai';
     f.innerHTML =
       '<a class="ph-link" href="#work-' + P.slug + '" tabindex="-1" aria-hidden="true">' +
-      '<div class="ph ai-cover" style="aspect-ratio:3/2">' +
-      (P.mark ? '<span class="ai-mark' + (P.markClass ? ' ' + P.markClass : '') + '" role="img" aria-label="' + P.name + '">' + P.mark + '</span>' : '<img class="ai-logo" src="logo.png" width="480" height="356" alt="' + P.name + '" loading="lazy">') +
-      '<span class="no"></span><span class="cat">AI Prompt</span><span class="open">View project &rarr;</span></div></a>' +
+      '<div class="ph ai-cover' + (P.thumb ? ' has-thumb' : '') + '" style="aspect-ratio:' + (P.thumb ? '27/16' : '3/2') + '">' +
+      (P.thumb ? '<img class="ai-thumb" src="' + P.thumb + '" width="1080" height="640" alt="' + P.alt + '" loading="lazy">' : P.mark ? '<span class="ai-mark' + (P.markClass ? ' ' + P.markClass : '') + '" role="img" aria-label="' + P.name + '">' + P.mark + '</span>' : '<img class="ai-logo" src="logo.png" width="480" height="356" alt="' + P.name + '" loading="lazy">') +
+      '<span class="no"></span><span class="cat">Website</span><span class="open">View project &rarr;</span></div></a>' +
       '<figcaption><strong><a href="#work-' + P.slug + '">' + P.name + '</a></strong><span>' + P.sub + '</span><span class="meta">' + P.meta + '</span></figcaption>';
     return f;
   }
@@ -1351,6 +1358,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       '<dl class="proj-meta">' + facts + '</dl>' +
       '<div class="cta-row" style="margin-top:28px"><a class="btn" href="' + P.url + '" target="_blank" rel="noopener">Visit the website</a></div></div>' +
       '<div class="wrap pg">' +
+      (P.thumb ? '<a class="ai-shot" href="' + P.url + '" target="_blank" rel="noopener"><img src="' + P.thumb + '" width="1080" height="640" alt="' + P.alt + '" loading="lazy"></a>' : '') +
       '<ul class="ai-points">' + pts + '</ul>' +
       '<div class="proj-cta"><p class="cta-line">Want a website like this for your brand?</p>' +
       '<div class="cta-row"><a class="btn" href="#contact">Tell me about your project</a><a class="link" href="#work">See other work</a></div></div></div>';
