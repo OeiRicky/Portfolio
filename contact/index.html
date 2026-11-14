@@ -146,6 +146,16 @@ h1.hero-title em { font-style: italic; color: var(--accent); }
   background-image: var(--grain); mix-blend-mode: overlay; opacity: .12;
 }
 
+/* AI Prompt projects */
+.ph.ai-cover { display: grid; place-items: center; background: var(--surface); }
+.ph .ai-mark { font: italic 400 clamp(1.6rem, 3vw, 2.4rem)/1.1 var(--display); text-align: center; color: var(--fg); letter-spacing: .01em; }
+.ph .ai-mark.caps { font-style: normal; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; font-size: clamp(1.4rem, 2.6vw, 2rem); }
+.ph .ai-logo { width: 30%; height: auto; object-fit: contain; }
+.ai-points { list-style: none; margin: clamp(28px, 4vw, 48px) 0 clamp(28px, 4vw, 48px); padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: clamp(14px, 2vw, 24px); }
+.ai-points li { border-top: 1px solid var(--line); padding-top: 14px; }
+.ai-points h3 { margin: 0 0 6px; font: 500 1rem/1.3 var(--display); }
+.ai-points p { margin: 0; color: var(--muted); font-size: .94rem; line-height: 1.6; }
+
 /* Sections and subpages */
 .sec { padding-block: clamp(56px, 9vw, 128px); border-top: 1px solid var(--line); }
 .sec-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 20px 32px; margin-bottom: clamp(28px, 4vw, 56px); }
@@ -569,6 +579,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
           <button class="chip" type="button" data-f="all" aria-pressed="true">All</button>
           <button class="chip" type="button" data-f="foto" aria-pressed="false">Photo</button>
           <button class="chip" type="button" data-f="film" aria-pressed="false">Video</button>
+          <button class="chip" type="button" data-f="ai" aria-pressed="false">AI Prompt</button>
         </div>
       </div>
     </div>
@@ -1275,6 +1286,77 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       '<figcaption><strong><a href="#work-' + P.slug + '">' + P.name + '</a></strong><span>' + P.sub + ' &middot; ' + P.photos.length + ' photos</span><span class="meta">' + P.meta + '</span></figcaption>';
     return f;
   }
+  // ---- AI Prompt projects ----
+  // Work made with AI (websites, tools): shows the result only. Add an entry: slug, name, kicker, sub, meta, lead, facts, url, points.
+  var APROJECTS = [
+    {
+      slug: 'portfolio-website', dir: '', name: 'Oei Ricky Portfolio Website',
+      kicker: 'AI Prompt &middot; Web design', sub: 'AI-assisted website', meta: 'Portfolio website',
+      lead: 'A portfolio website for photo, video and editing services, designed and built with AI. It brings together a cinematic hero slideshow, a contact-sheet gallery with filters, a production calendar and a booking brief that opens in WhatsApp, in a clean white layout that works on any screen.',
+      facts: [['Type', 'Portfolio website'], ['Made with', 'AI'], ['Year', '2026'], ['Live site', 'oeiricky.my.id']],
+      url: 'https://oeiricky.my.id',
+      points: [
+        ['Cinematic first impression', 'A 2.39:1 hero slideshow of selected landscape photos, with swipe and autoplay.'],
+        ['Work, organized', 'A contact-sheet gallery filtered by photo, video and AI, with a dedicated page and lightbox for every project.'],
+        ['Built for booking', 'A production calendar and a project brief that sends the details straight to WhatsApp or email.']
+      ]
+    },
+    {
+      slug: 'yournamephotographie-website', dir: '', name: 'YourName Photographie Website', mark: 'YourName<br>Photographie',
+      kicker: 'AI Prompt &middot; Web design', sub: 'AI-assisted website', meta: 'Photography studio website',
+      lead: 'A one-page portfolio and booking website for a photography and videography studio in Semarang, designed and built with AI. It presents the studio, five signature services, selected work, the way of working and three packages, and ends with a booking form that sends the details to WhatsApp.',
+      facts: [['Type', 'Portfolio and booking website'], ['Made with', 'AI'], ['Year', '2026'], ['Location', 'Semarang'], ['Live site', 'yournamephotographie.web.id']],
+      url: 'https://yournamephotographie.web.id',
+      points: [
+        ['A calm first impression', 'An editorial hero with the tagline "Quiet light. Honest emotion.", plus buttons to the portfolio and to availability.'],
+        ['Services and packages', 'Sweet Seventeen, Sangjit, Prewedding, Wedding and Graduation, with Essential, Signature and Heirloom packages.'],
+        ['Made for booking', 'A booking form for name, service, date, location and vision, and a pre-filled WhatsApp message.']
+      ]
+    },
+    {
+      slug: 'ggano-online-store', dir: '', name: 'G-GANO Online Store', mark: 'G-GANO', markClass: 'caps',
+      kicker: 'AI Prompt &middot; Web design', sub: 'AI-assisted website', meta: 'Online store website',
+      lead: 'An online store for G-GANO, an Indonesian brand of premium men\'s T-shirts, designed and built with AI. Shoppers browse the Casual and Graphic collections, choose a colour and size, fill a cart and send the whole order through WhatsApp, or continue on Shopee.',
+      facts: [['Type', 'Online store website'], ['Made with', 'AI'], ['Year', '2026'], ['Language', 'Indonesian'], ['Live site', 'ggano.web.id']],
+      url: 'https://ggano.web.id',
+      points: [
+        ['Easy to browse', 'A promo banner slider, featured picks and a catalog with colour filters, product details and a size picker.'],
+        ['Order in one message', 'A shopping cart with quantities and totals that sends the full order to WhatsApp, plus a link to the Shopee store.'],
+        ['More than a catalog', 'A store locator with search and map, a contact page, customer sign-in and an admin area for the owner.']
+      ]
+    }
+  ];
+  function aiTile(P) {
+    var f = document.createElement('figure');
+    f.className = 'tile'; f.dataset.cat = 'ai';
+    f.innerHTML =
+      '<a class="ph-link" href="#work-' + P.slug + '" tabindex="-1" aria-hidden="true">' +
+      '<div class="ph ai-cover" style="aspect-ratio:3/2">' +
+      (P.mark ? '<span class="ai-mark' + (P.markClass ? ' ' + P.markClass : '') + '" role="img" aria-label="' + P.name + '">' + P.mark + '</span>' : '<img class="ai-logo" src="logo.png" width="480" height="356" alt="' + P.name + '" loading="lazy">') +
+      '<span class="no"></span><span class="cat">AI Prompt</span><span class="open">View project &rarr;</span></div></a>' +
+      '<figcaption><strong><a href="#work-' + P.slug + '">' + P.name + '</a></strong><span>' + P.sub + '</span><span class="meta">' + P.meta + '</span></figcaption>';
+    return f;
+  }
+  function buildAiPage(P) {
+    var page = document.createElement('div');
+    page.id = 'page-work-' + P.slug; page.dataset.page = 'work-' + P.slug; page.hidden = true;
+    var facts = P.facts.map(function (x) { return '<div><dt>' + x[0] + '</dt><dd>' + x[1] + '</dd></div>'; }).join('');
+    var pts = P.points.map(function (x) { return '<li><h3>' + x[0] + '</h3><p>' + x[1] + '</p></li>'; }).join('');
+    page.innerHTML =
+      '<div class="wrap page-head">' +
+      '<a class="link back" href="#work">&larr; All work</a>' +
+      '<p class="label" style="margin-top:32px">' + P.kicker + '</p>' +
+      '<h1 class="ptitle" style="margin-top:14px">' + P.name + '</h1>' +
+      '<p class="lead">' + P.lead + '</p>' +
+      '<dl class="proj-meta">' + facts + '</dl>' +
+      '<div class="cta-row" style="margin-top:28px"><a class="btn" href="' + P.url + '" target="_blank" rel="noopener">Visit the website</a></div></div>' +
+      '<div class="wrap pg">' +
+      '<ul class="ai-points">' + pts + '</ul>' +
+      '<div class="proj-cta"><p class="cta-line">Want a website like this for your brand?</p>' +
+      '<div class="cta-row"><a class="btn" href="#contact">Tell me about your project</a><a class="link" href="#work">See other work</a></div></div></div>';
+    var cal = document.getElementById('page-calendar');
+    cal.parentNode.insertBefore(page, cal);
+  }
   // ---- Video projects ----
   // To add one: put NAME.mp4 and NAME.jpg (poster) in the current Img# folder (see the note above), then add an entry below with dir: 'Img#/NAME'. Vertical 9:16 by default; set ratio: '16/9' for landscape.
   var VPROJECTS = [
@@ -1413,6 +1495,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
   var grid = document.getElementById('grid'), teaser = document.getElementById('teaser');
   PROJECTS.forEach(function (P) { grid.appendChild(projectTile(P)); });
   VPROJECTS.forEach(function (P) { grid.appendChild(videoCard(P)); });
+  APROJECTS.forEach(function (P) { grid.appendChild(aiTile(P)); });
   // Home selection: landscape frames only (3:2 crop). [slug, photo file] for photos; [slug, null] for a landscape video.
   [['efrata-furniture', '11'], ['mr-d', '03'], ['efrata-company-profile', null],
    ['night-market-simpang-lima', '01'], ['gang-baru-market', '05'], ['pengasapan-ikan', '05']].forEach(function (x) {
@@ -1489,6 +1572,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
   }
   PROJECTS.forEach(buildProjectPage);
   VPROJECTS.forEach(buildVideoPage);
+  APROJECTS.forEach(buildAiPage);
 
   var chips = document.querySelectorAll('.chip'), count = document.getElementById('count');
   chips.forEach(function (b) {
@@ -1518,6 +1602,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
   // Booked dates come from the Google Calendar "Oei Ricky Pekerjaan" (exported .ics, last synced 6 Nov 2026: no events yet).
   // To block dates, add ranges below as ['first day', 'day after the last day'] (the same convention as DTSTART/DTEND in the .ics).
   var BOOKED = [
+    ['2026-12-18', '2026-12-19'],   // 18 Dec 2026 (from Google Calendar; end date is exclusive)
     // ['2026-12-12', '2026-12-13'],   // one day: 12 Dec 2026
     // ['2026-12-20', '2026-12-23']    // 20-22 Dec 2026
   ];
@@ -1619,7 +1704,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
   document.getElementById('copy-mail').addEventListener('click', function () { copy(document.getElementById('mail').textContent, this); });
 
   // ---- Navigasi antar halaman (hash) ----
-  var ROUTES = ['home', 'work'].concat(PROJECTS.concat(VPROJECTS).map(function (P) { return 'work-' + P.slug; }), ['calendar', 'contact']);
+  var ROUTES = ['home', 'work'].concat(PROJECTS.concat(VPROJECTS, APROJECTS).map(function (P) { return 'work-' + P.slug; }), ['calendar', 'contact']);
   var links = document.querySelectorAll('.nav a');
   // Deploy build sets window.PATHMODE: real paths (/work/mr-d/) instead of hash routes. The hosted preview keeps hash routes.
   var PATHMODE = !!window.PATHMODE, SITE = 'https://oeiricky.my.id';
@@ -1639,7 +1724,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
   function plain(html) { var t = document.createElement('textarea'); t.innerHTML = html; return t.value; }
   function setMeta(name) {
     var title, desc, P = null;
-    if (name.indexOf('work-') === 0) P = PROJECTS.concat(VPROJECTS).filter(function (x) { return 'work-' + x.slug === name; })[0];
+    if (name.indexOf('work-') === 0) P = PROJECTS.concat(VPROJECTS, APROJECTS).filter(function (x) { return 'work-' + x.slug === name; })[0];
     if (P) { title = plain(P.name) + ' (' + plain(P.sub) + ') | Oei Ricky'; desc = plain(P.lead).replace(/\s*(Click a photo to enlarge it\.|Hover (a|the) video to play it\.)\s*$/, ''); }
     else if (name === 'work') { title = 'Selected Work: Photography and Video | Oei Ricky'; desc = 'Selected photography and video projects by Oei Ricky: events, products, interiors, street photography, corporate videos and company profiles.'; }
     else if (name === 'calendar') { title = 'Production Calendar: Check Available Dates | Oei Ricky'; desc = 'Check which dates are open for a photo or video shoot with Oei Ricky, then send a booking brief.'; }
