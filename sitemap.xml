@@ -121,6 +121,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://oeiricky.my.id/work/tawang-train-station/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://oeiricky.my.id/work/atom-market/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://oeiricky.my.id/work/portfolio-website/</loc>
     <image:image><image:loc>https://oeiricky.my.id/Img5/web/oeiricky-website.jpg</image:loc><image:title>Home page of the Oei Ricky portfolio website</image:title></image:image>
     <lastmod>2026-11-14</lastmod>

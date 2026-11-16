@@ -178,6 +178,10 @@ h1.hero-title em { font-style: italic; color: var(--accent); }
   border: 1px solid var(--line); border-radius: 999px; cursor: pointer;
   font: 400 .72rem var(--mono); letter-spacing: .1em; text-transform: uppercase;
 }
+.subfilters { margin: calc(-1 * clamp(8px, 2vw, 24px)) 0 clamp(20px, 3vw, 36px); }
+.schip { min-height: 34px; padding: 0 .9rem; background: transparent; color: var(--muted); border: 1px solid transparent; border-bottom-color: var(--line); border-radius: 0; cursor: pointer; font: 400 .7rem var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.schip:hover { color: var(--fg); }
+.schip[aria-pressed="true"] { color: var(--fg); border-bottom-color: var(--accent); }
 .chip:hover { color: var(--fg); border-color: var(--muted); }
 .chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
 #teaser { column-count: auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: clamp(14px, 2vw, 28px); }
@@ -586,12 +590,14 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
           <button class="chip" type="button" data-f="all" aria-pressed="true">All</button>
           <button class="chip" type="button" data-f="foto" aria-pressed="false">Photo</button>
           <button class="chip" type="button" data-f="film" aria-pressed="false">Video</button>
-          <button class="chip" type="button" data-f="ai" aria-pressed="false">Website</button>
+          <button class="chip" type="button" data-f="design" aria-pressed="false">Design</button>
         </div>
       </div>
+      <div class="filters subfilters" id="subf" role="group" aria-label="Filter by type" hidden></div>
     </div>
     <div class="wrap pg">
       <div class="grid" id="grid"></div>
+      <p class="lead" id="empty" hidden>New work in this category is coming soon.</p>
     </div>
   </div>
 
@@ -1280,11 +1286,38 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
         { f: '10', w: 600, h: 900, alt: 'White duck swimming in a green canal below a moss-covered stone wall, framed by blurred leaves' },
         { f: '11', w: 600, h: 900, alt: 'Woman in a grey hijab looking toward the camera among baskets of pink and white flower petals in a market hall' }
       ]
+    },
+    {
+      slug: 'tawang-train-station', dir: 'Img5/tawang', name: 'Tawang Train Station',
+      kicker: 'Photo &middot; Personal', sub: 'Hobby', meta: 'Street Photography',
+      lead: 'A personal street photography series from Tawang Station in Semarang, shot in 2026: curving platforms and rails, the old canopy roofs, and the railway workers going about their day among the trains. Click a photo to enlarge it.',
+      facts: [['Category', 'Hobby'], ['Genre', 'Street photography'], ['Location', 'Tawang Station, Semarang'], ['Year', '2026']],
+      cover: 1,
+      photos: [
+        { f: '01', w: 600, h: 900, alt: 'Railway worker in a yellow helmet and blue overalls crouching beside the open door of a grey and orange train carriage, with blue water pipes in the foreground' },
+        { f: '04', w: 900, h: 600, alt: 'Two railway workers in orange vests walking down a long platform at Semarang Tawang, with a train on the right and a red gate with a no-smoking sign on the left' },
+        { f: '02', w: 600, h: 900, alt: 'Curving railway track beside the old canopy roof of Tawang Station, with a red signal and a yellow signal mast in the distance' },
+        { f: '05', w: 900, h: 600, alt: 'Curved platform with a sweeping canopy and a Platform 1 sign, beside rails and a red signal, with freight containers in the distance' },
+        { f: '03', w: 600, h: 900, alt: 'Semarang Tawang station sign and a yellow exit sign under the arched canopy, with a train at the platform and a potted shrub in the foreground' }
+      ]
+    },
+    {
+      slug: 'atom-market', dir: 'Img5/atom', name: 'Atom Market',
+      kicker: 'Photo &middot; Personal', sub: 'Hobby', meta: 'Street Photography',
+      lead: 'A personal street photography series from Atom Market in Surabaya, shot in 2026: a stairwell under a glass roof, a snack stall in a crowd and a narrow indoor lane. The colour grade is inspired by the green and amber night palette of Wong Kar-wai films. Click a photo to enlarge it.',
+      facts: [['Category', 'Hobby'], ['Genre', 'Street photography'], ['Location', 'Atom Market, Surabaya'], ['Year', '2026'], ['Colour grade', 'Inspired by Wong Kar-wai']],
+      cover: 1,
+      photos: [
+        { f: '01', w: 600, h: 900, alt: 'Looking straight up at a stained glass-like skylight in a market, its grid of dark frames glowing green and yellow against shadowed walls' },
+        { f: '02', w: 900, h: 600, alt: 'Snack stall under a yellow Amoy Snack sign, with bags of crackers hanging above and shoppers in hijabs and a man in a cap and mask crowding the counter' },
+        { f: '03', w: 600, h: 900, alt: 'Narrow indoor market lane lit by green fluorescent tubes, with food stalls on the left, closed shutters on the right and a few people far down the lane' },
+        { f: '04', w: 900, h: 600, alt: 'Concrete staircases with red railings zigzagging up through the market atrium, under a glass roof glowing green and yellow' }
+      ]
     }
   ];
   function projectTile(P) {
     var f = document.createElement('figure'), c = P.photos[P.cover];
-    f.className = 'tile'; f.dataset.cat = 'foto';
+    f.className = 'tile'; f.dataset.cat = 'foto'; f.dataset.slug = P.slug;
     f.innerHTML =
       '<a class="ph-link" href="#work-' + P.slug + '" tabindex="-1" aria-hidden="true">' +
       '<div class="ph" style="aspect-ratio:' + c.w + '/' + c.h + '">' +
@@ -1335,7 +1368,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
   ];
   function aiTile(P) {
     var f = document.createElement('figure');
-    f.className = 'tile'; f.dataset.cat = 'ai';
+    f.className = 'tile'; f.dataset.cat = 'design'; f.dataset.slug = P.slug;
     f.innerHTML =
       '<a class="ph-link" href="#work-' + P.slug + '" tabindex="-1" aria-hidden="true">' +
       '<div class="ph ai-cover' + (P.thumb ? ' has-thumb' : '') + '" style="aspect-ratio:' + (P.thumb ? '27/16' : '3/2') + '">' +
@@ -1441,7 +1474,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
   }, { threshold: [0, .3, .5, .7, 1] }) : null;
   function videoCard(P) {
     var f = document.createElement('figure'), c = P.videos[P.cover], rt = P.ratio || '9/16', wide = rt === '16/9';
-    f.className = 'tile'; f.dataset.cat = 'film';
+    f.className = 'tile'; f.dataset.cat = 'film'; f.dataset.slug = P.slug;
     f.innerHTML =
       '<a class="ph-link" href="#work-' + P.slug + '" tabindex="-1" aria-hidden="true">' +
       '<div class="ph" style="aspect-ratio:' + rt + '">' +
@@ -1582,16 +1615,56 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
   VPROJECTS.forEach(buildVideoPage);
   APROJECTS.forEach(buildAiPage);
 
-  var chips = document.querySelectorAll('.chip'), count = document.getElementById('count');
+  // Work filters: a main type (Photo / Video / Design) and, under it, a sub type. Projects not listed in SUBCAT only show under "All".
+  var SUBS = {
+    foto: [['all', 'All'], ['product', 'Product'], ['event', 'Event'], ['graduation', 'Graduation'], ['interior', 'Interior & Architecture'], ['street', 'Street']],
+    film: [['all', 'All'], ['product', 'Product'], ['company', 'Company Profile'], ['motion', 'Motion Graphics']],
+    design: [['all', 'All'], ['website', 'Website']]
+  };
+  var SUBCAT = {
+    'efrata-product': 'product',
+    'binus-semarang-graduation': 'graduation', 'nathania-graduation': 'graduation', 'marina': 'event',
+    'efrata-furniture': 'interior', 'mr-d': 'interior',
+    'sineroom-alliance-francaise-day-1': 'event', 'sineroom-alliance-francaise-day-2': 'event', 'sineroom-ritual-untuk-kawan': 'event', 'natal-ktb-gkt-semarang-barat': 'event',
+    'pengasapan-ikan': 'street', 'model-x-kota-lama': 'street', 'night-market-simpang-lima': 'street', 'gang-baru-market': 'street', 'gebyuran-bustaman': 'street', 'bergota-market': 'street', 'tawang-train-station': 'street', 'atom-market': 'street',
+    'efrata-videos': 'product', 'monolog-videos': 'product',
+    'efrata-company-profile': 'company', 'mas-video-profile': 'company',
+    'portfolio-website': 'website', 'yournamephotographie-website': 'website', 'ggano-online-store': 'website'
+  };
+  grid.querySelectorAll('.tile').forEach(function (t) { t.dataset.sub = SUBCAT[t.dataset.slug] || ''; });
+  var chips = document.querySelectorAll('.chip'), count = document.getElementById('count'), subf = document.getElementById('subf');
+  var curTop = 'all', curSub = 'all';
+  function applyFilter() {
+    var n = 0;
+    grid.querySelectorAll('.tile').forEach(function (t) {
+      var show = (curTop === 'all' || t.dataset.cat === curTop) && (curSub === 'all' || t.dataset.sub === curSub);
+      t.hidden = !show; if (show) n++;
+    });
+    count.textContent = n + (n === 1 ? ' frame' : ' frames');
+    document.getElementById('empty').hidden = n > 0;
+  }
+  function buildSubs() {
+    subf.innerHTML = '';
+    var list = SUBS[curTop];
+    subf.hidden = !list;
+    if (!list) return;
+    list.forEach(function (x) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'schip'; b.textContent = x[1]; b.dataset.s = x[0];
+      b.setAttribute('aria-pressed', x[0] === curSub ? 'true' : 'false');
+      b.addEventListener('click', function () {
+        curSub = x[0];
+        subf.querySelectorAll('.schip').forEach(function (y) { y.setAttribute('aria-pressed', y === b ? 'true' : 'false'); });
+        applyFilter();
+      });
+      subf.appendChild(b);
+    });
+  }
   chips.forEach(function (b) {
     b.addEventListener('click', function () {
-      var want = b.dataset.f, n = 0;
+      curTop = b.dataset.f; curSub = 'all';
       chips.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-      grid.querySelectorAll('.tile').forEach(function (t) {
-        var show = want === 'all' || t.dataset.cat === want;
-        t.hidden = !show; if (show) n++;
-      });
-      count.textContent = n + (n === 1 ? ' frame' : ' frames');
+      buildSubs(); applyFilter();
     });
   });
 
