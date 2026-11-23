@@ -212,6 +212,7 @@ figcaption .meta { font: 400 .7rem var(--mono); letter-spacing: .06em; margin-to
 .vgrid.solo { grid-template-columns: minmax(0, 420px); }
 @media (max-width: 1000px) { .vgrid.solo { grid-template-columns: minmax(0, 420px); } }
 .vid { margin: 0; }
+.vid.land { grid-column: 1 / -1; max-width: 1040px; }
 .vid video { display: block; width: 100%; aspect-ratio: 9 / 16; background: #000; object-fit: cover; border-radius: 2px; }
 .vid figcaption { padding-top: 12px; }
 .note { margin: 8px 0 0; font: 400 .72rem/1.6 var(--mono); letter-spacing: .06em; color: var(--faint); }
@@ -1425,6 +1426,36 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
       ]
     },
     {
+      slug: 'interior-villa-video', dir: 'Video1/interior-video', name: 'Interior Villa - Video',
+      kicker: 'Video &middot; Interior', sub: 'Interior Video', meta: 'Corporate video',
+      lead: 'Interior videos for Efrata Furniture, filmed at a villa in Canggu, Bali in 2026. A landscape film opens the series, followed by eight vertical clips that walk through the living areas, bedrooms, bathroom and terrace. Hover a video to play it.',
+      facts: [['Client', 'Efrata Furniture'], ['Service', 'Video production and editing'], ['Location', 'Villa Canggu, Bali'], ['Year', '2026'], ['Format', 'Vertical 9:16 and landscape 16:9']],
+      cover: 1,
+      videos: [
+        { f: 'video-landscape', t: 'Interior Villa Video Landscape', d: '1:47', r: '16/9' },
+        { f: 'video-1', t: 'Interior Villa Video 1', d: '0:59' },
+        { f: 'video-2', t: 'Interior Villa Video 2', d: '0:27' },
+        { f: 'video-3', t: 'Interior Villa Video 3', d: '0:38' },
+        { f: 'video-4', t: 'Interior Villa Video 4', d: '0:30' },
+        { f: 'video-5', t: 'Interior Villa Video 5', d: '0:18' },
+        { f: 'video-6', t: 'Interior Villa Video 6', d: '0:17' },
+        { f: 'video-7', t: 'Interior Villa Video 7', d: '0:25' },
+        { f: 'video-8', t: 'Interior Villa Video 8', d: '0:25' }
+      ]
+    },
+    {
+      slug: 'interior-villa-monolog', dir: 'Video1/interior-monolog', name: 'Interior Villa - Monolog',
+      kicker: 'Video &middot; Monolog', sub: 'Monolog Video', meta: 'Corporate video',
+      lead: 'Monolog videos for Efrata Furniture, filmed at a villa in Canggu, Bali in 2026. A host walks through the finished interior, from the planning stage and material samples to the furniture in place. Hover a video to play it.',
+      facts: [['Client', 'Efrata Furniture'], ['Service', 'Video production and editing'], ['Location', 'Villa Canggu, Bali'], ['Year', '2026'], ['Format', 'Vertical 9:16']],
+      cover: 0,
+      videos: [
+        { f: 'monolog-1', t: 'Interior Villa Monolog 1', d: '0:44' },
+        { f: 'monolog-2', t: 'Interior Villa Monolog 2', d: '1:06' },
+        { f: 'monolog-3', t: 'Interior Villa Monolog 3', d: '1:16' }
+      ]
+    },
+    {
       slug: 'efrata-company-profile', dir: 'Video1/efrata-profile', name: 'Furniture', ratio: '16/9',
       kicker: 'Video &middot; Company Profile', sub: 'Company Profile', meta: 'Corporate video',
       lead: 'A company profile film for Efrata Furniture, made in Semarang in 2026. It introduces the company, from the workshop floor to the finished pieces in real homes. Hover the video to play it.',
@@ -1482,8 +1513,8 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
     return f;
   }
   function videoItem(P, v) {
-    var f = document.createElement('figure'), rt = P.ratio || '9/16';
-    f.className = 'vid';
+    var f = document.createElement('figure'), rt = v.r || P.ratio || '9/16';
+    f.className = 'vid' + (rt === '16/9' ? ' land' : '');
     f.innerHTML =
       '<video controls playsinline preload="none" poster="' + P.dir + '/' + v.f + '.jpg" aria-label="' + v.t + ' video" style="aspect-ratio:' + rt + '"><source src="' + P.dir + '/' + v.f + '.mp4" type="video/mp4"></video>' +
       '<figcaption><strong>' + v.t + '</strong><span class="meta">' + v.d + ' &middot; ' + rt.replace('/', ':') + '</span></figcaption>';
@@ -1625,7 +1656,7 @@ figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
     'efrata-furniture': 'interior', 'mr-d': 'interior',
     'sineroom-alliance-francaise-day-1': 'event', 'sineroom-alliance-francaise-day-2': 'event', 'sineroom-ritual-untuk-kawan': 'event', 'natal-ktb-gkt-semarang-barat': 'event',
     'pengasapan-ikan': 'street', 'model-x-kota-lama': 'street', 'night-market-simpang-lima': 'street', 'gang-baru-market': 'street', 'gebyuran-bustaman': 'street', 'bergota-market': 'street', 'tawang-train-station': 'street', 'atom-market': 'street',
-    'efrata-videos': 'product', 'monolog-videos': 'product',
+    'efrata-videos': 'product', 'monolog-videos': 'product', 'interior-villa-monolog': 'product', 'interior-villa-video': 'product',
     'efrata-company-profile': 'company', 'mas-video-profile': 'company',
     'portfolio-website': 'website', 'yournamephotographie-website': 'website', 'ggano-online-store': 'website'
   };
